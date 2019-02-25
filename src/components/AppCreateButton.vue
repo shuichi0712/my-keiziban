@@ -1,20 +1,24 @@
 <template>
     <div>
-        タスク作成を押すと、console.logにcreateSingleTaskと表示されます。
-        <button @click="createSingleTask">タスク作成</button>
+        <textarea v-model="task" />
+        <button @click="createSingleTask">
+            タスク作成</button>
     </div>
-
 </template>
 <script lang="ts">
-import firebase from 'firebase';
-import { Vue } from 'vue-property-decorator';
+import { Prop, Component, Vue } from 'vue-property-decorator';
 
+@Component
 export default class AppCreateButton extends Vue {
-public addTodoString: any;
-public createSingleTask() {
-   console.log("createSingleTask");
-}
+    @Prop({})
+    public name!: string;
 
+    @Prop({})
+    public task!: string;
+
+    public createSingleTask() {
+        this.$emit('createSingleTask', this.name, this.task);
+    }
 }
 </script>
 
