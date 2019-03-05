@@ -7,15 +7,16 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
 export default class AppTextArea extends Vue {
-    @Prop({})
-    public name!: string;
-    @Prop({})
-    public date!: string;
-    @Prop({})
-    public message!: string;
 
-
-
+    get name() {
+        return "test"
+    }
+    get date() {
+        return new Date();
+    }
+    get message() {
+        return "test";
+    }
 }
 </script>
 <style scoped>

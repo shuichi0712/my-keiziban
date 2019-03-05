@@ -1,13 +1,17 @@
 <template>
   <div>
-    <AppCreateButton @createSingleTask="input" />
-    <AppBoardList v-for="list in lists" :key="list.id" :name="list.name" :message="list.message" :date="list.date" />
+    <AppCreateButton @createSingleTask="bordlists" />
+    <AppBoardList/>{{ list }}
   </div>
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import AppCreateButton from '@/components/AppCreateButton.vue';
 import AppBoardList from '@/components/AppBoardList.vue';
+import { Getter, namespace } from 'vuex-class';
+import Store from '../store/store';
+
+const todoModule = namespace("store/store");
 
 @Component({
   components: {
@@ -16,8 +20,10 @@ import AppBoardList from '@/components/AppBoardList.vue';
   },
 })
 export default class Todo extends Vue {
-  public input() {
-    console.log("input");
+  public list = [{ id: 1, name: "test", message: "testdayo", date: new Date() }, { id: 2, name: "test", message: "testdayo", date: new Date() }, { id: 3, name: "test", message: "testdayo", date: new Date() }];
+
+  public bordlists() {
+    this.list.push({ id: 1, name: "test", message: "testdayo", date: new Date() });
   }
 }
 </script>
