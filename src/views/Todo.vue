@@ -1,31 +1,31 @@
 <template>
   <div>
-    <AppCreateButton @createSingleTask="bordlists" />
-    <AppBoardList/>{{ list }}
+    <textarea v-model="comment" />
   </div>
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import AppCreateButton from '@/components/AppCreateButton.vue';
-import AppBoardList from '@/components/AppBoardList.vue';
 import { Getter, namespace } from 'vuex-class';
-import store from '@/store/toDo';
+import store from '@/stores/toDo';
 
-const todoModule = namespace("store/store");
+const todoModule = namespace("stores/toDo");
 
 @Component({
   components: {
     AppCreateButton,
-    AppBoardList,
+
   },
 })
 export default class Todo extends Vue {
-  public list = [{ id: 1, name: "test", message: "testdayo", date: new Date() }, { id: 2, name: "test", message: "testdayo", date: new Date() }, { id: 3, name: "test", message: "testdayo", date: new Date() }];
+  @todoModule.Action('setComment')
+  public setComment: any;
 
-  public bordlists() {
-    store.commit('increment')
-    console.log(store.state.count);
-    this.list.push({ id: 1, name: "test", message: "testdayo", date: new Date() });
+  get comment() {
+    return store.getters.comment;
+  }
+  set comment(value) {
+    this.setComment(value);
   }
 }
 </script>

@@ -9,7 +9,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 export default class AppTextArea extends Vue {
 
     get name() {
-        return "test"
+        return "test";
     }
     get date() {
         return new Date();

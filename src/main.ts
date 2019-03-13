@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
-import store from './store/toDo';
+import store from './stores/toDo';
 import './registerServiceWorker';
 
 Vue.config.productionTip = false;
