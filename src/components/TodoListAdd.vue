@@ -6,11 +6,13 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
+import store from "@/stores/toDo";
 
+@Component
 export default class TodoListAdd extends Vue {
-
     public addTodoText(e) {
-        this.$store.dispatch("addTodo", { text: e.target.value });
+        store.dispatch("addTodoText", e.target.value);
+        e.target.value = "";
     }
 }
 </script>

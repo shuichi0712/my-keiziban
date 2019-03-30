@@ -16,6 +16,7 @@
     "object-literal-sort-keys": false,
     "no-consecutive-blank-lines": false,
     "no-shadowed-variable": false,
-    "trailing-comma": [false]
+    "trailing-comma": [false],
+    "curly": [true, "ignore-same-line"]
   }
 }
